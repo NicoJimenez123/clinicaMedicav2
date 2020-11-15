@@ -11,8 +11,4 @@ public class MedicoCoordinador extends Medico {
 		super();
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 }

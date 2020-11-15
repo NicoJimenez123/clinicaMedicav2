@@ -14,8 +14,20 @@ public class Estudio {
 
 	}
 
-	public void finalize() throws Throwable {
+	public boolean isAsistencia() {
+		return asistencia;
+	}
 
+	public void setAsistencia(boolean asistencia) {
+		this.asistencia = asistencia;
+	}
+
+	public LocalDate getFechaRealizar() {
+		return fechaRealizar;
+	}
+
+	public void setFechaRealizar(LocalDate fechaRealizar) {
+		this.fechaRealizar = fechaRealizar;
 	}
 
 }

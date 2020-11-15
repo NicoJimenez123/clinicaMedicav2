@@ -13,9 +13,21 @@ public class Medico {
 	public Medico(){
 
 	}
+	
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
 
-	public void finalize() throws Throwable {
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
+	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public void cargarEstudio(){

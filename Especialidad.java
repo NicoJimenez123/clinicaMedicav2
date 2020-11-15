@@ -8,14 +8,17 @@
 public class Especialidad {
 
 	private String nombreEspecialidad;
-	private Medico m_Medico;
 
 	public Especialidad(){
 
 	}
 
-	public void finalize() throws Throwable {
+	public String getNombreEspecialidad() {
+		return nombreEspecialidad;
+	}
 
+	public void setNombreEspecialidad(String nombreEspecialidad) {
+		this.nombreEspecialidad = nombreEspecialidad;
 	}
 
 }

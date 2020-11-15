@@ -11,14 +11,41 @@ public class Consultorio {
 	private Medico medico;
 	private int numeroConsultorio;
 	private Laboratorio m_Laboratorio;
-	private AreaMedica m_AreaMedica;
 
 	public Consultorio(){
 
 	}
 
-	public void finalize() throws Throwable {
+	public List<Laboratorio> getLaboratoriosAsociados() {
+		return laboratoriosAsociados;
+	}
 
+	public void setLaboratoriosAsociados(List<Laboratorio> laboratoriosAsociados) {
+		this.laboratoriosAsociados = laboratoriosAsociados;
+	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public int getNumeroConsultorio() {
+		return numeroConsultorio;
+	}
+
+	public void setNumeroConsultorio(int numeroConsultorio) {
+		this.numeroConsultorio = numeroConsultorio;
+	}
+
+	public Laboratorio getLaboratorio() {
+		return m_Laboratorio;
+	}
+
+	public void setLaboratorio(Laboratorio m_Laboratorio) {
+		this.m_Laboratorio = m_Laboratorio;
 	}
 
 	public void derivarLaboratorio(){

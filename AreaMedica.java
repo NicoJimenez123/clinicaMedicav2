@@ -15,8 +15,29 @@ public class AreaMedica {
 
 	}
 
-	public void finalize() throws Throwable {
-
+	public int getCodigoArea() {
+		return codigoArea;
 	}
+
+	public void setCodigoArea(int codigoArea) {
+		this.codigoArea = codigoArea;
+	}
+
+	public List<Consultorio> getConsultorios() {
+		return consultorios;
+	}
+
+	public void setConsultorios(List<Consultorio> consultorios) {
+		this.consultorios = consultorios;
+	}
+
+	public String getNombreArea() {
+		return nombreArea;
+	}
+
+	public void setNombreArea(String nombreArea) {
+		this.nombreArea = nombreArea;
+	}
+
 
 }

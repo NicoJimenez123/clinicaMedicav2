@@ -7,14 +7,9 @@
  */
 public class DirectorGeneral {
 
-	private SistemaInterno m_SistemaInterno;
-
 	public DirectorGeneral(){
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 
 }

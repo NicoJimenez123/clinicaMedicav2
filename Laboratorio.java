@@ -7,21 +7,22 @@
  */
 public class Laboratorio {
 
-	/**
-	 * la cantidad de estudios debe ser un atributo static
-	 */
-	private int cantEstudiosRealizados;
-	private Estudio estudio;
+	private static int cantEstudiosRealizados;
 
 	public Laboratorio(){
-
+		
 	}
 
-	public void finalize() throws Throwable {
-
+	public static int getCantEstudiosRealizados() {
+		return cantEstudiosRealizados;
 	}
 
-	public boolean realizarEstudio(){
+	public void setCantEstudiosRealizados() {
+		Laboratorio.cantEstudiosRealizados++;
+	}
+
+	public boolean realizarEstudio(Estudio estudio){
+		// sumar uno a la cantidad de estudios realizados
 		return false;
 	}
 
