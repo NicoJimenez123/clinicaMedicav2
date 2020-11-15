@@ -121,5 +121,9 @@ public class Turno {
 	public void turnoConcurrido(){
 
 	}
+	
+	public String obtenerFechaYHora() {
+		return this.fecha.toString() + this.horaInicio.toString();
+	}
 
 }
