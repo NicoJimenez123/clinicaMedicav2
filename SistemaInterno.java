@@ -98,7 +98,6 @@ public class SistemaInterno {
 		}
 		//por el contrario creo el turno y aviso con el return true que pudo ser creado
 		Turno turno = new Turno(consultorio, costo, fecha, horaFinalizacion, horaInicio, paciente);
-		System.out.println(turno);
 		this.turnos.add(turno);
 		paciente.anadirTurno(turno);
 		return true;
@@ -162,7 +161,19 @@ public class SistemaInterno {
 	}
 	
 	public void agregarPaciente(Paciente paciente){
-		this.pacientes.add(paciente);
+		boolean band = false; // Cuando sea true es porque encontró un paciente con el mismo dni
+		for(Paciente p : this.pacientes) {
+			if(p.getDni() == paciente.getDni()) {
+				System.out.println("Ya existe un paciente registrado con ese dni");
+				band = true;
+			}
+		}
+		if(!band) {
+			this.pacientes.add(paciente);
+		}
+		else {
+			System.out.println("No fue posible agregar el paciente a la lista");
+		}
 	}
 
 	public void agregarAreaMedica(AreaMedica areaMedica){

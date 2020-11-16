@@ -22,6 +22,7 @@ public class Main {
 			System.out.println("Opcion 3) Concurrir Turno");
 			System.out.println("Opcion 4) Obtener Reporte de Estudios Realizados");
 			System.out.println("Opcion 5) Registrar un Paciente");
+			System.out.println("Opcion 6) Obtener Lista de Turnos de un Paciente");
 			System.out.println("Ingrese una Opcion: ");
 			int opcion = 0;
 			opcion = s.nextInt();
@@ -53,11 +54,26 @@ public class Main {
 						break;
 					}
 			case 5: Paciente p = crearPaciente();sI.agregarPaciente(p); break;
+			case 6: listarTurnosPaciente();break;
 			case 33: cargarDatos();break;
 			}
 		}
 	}
 	
+	private static void listarTurnosPaciente() {
+		System.out.println("\nIngrese el DNI del paciente: ");
+		int dni = s.nextInt();
+		Paciente p = sI.obtenerPaciente(dni);
+		if(p != null) {
+			for(Turno t : sI.verTurnos(p)) {
+				System.out.println(t.toString());
+			}
+		}
+		else {
+			System.out.println("No existe un paciente registrado con ese DNI");
+		}
+	}
+
 	public static Paciente crearPaciente(){
 		Paciente nuevoPaciente = new Paciente();
 

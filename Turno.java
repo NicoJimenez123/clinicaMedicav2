@@ -128,4 +128,9 @@ public class Turno {
 		return this.fecha.toString() + " " + this.horaInicio.toString();
 	}
 
+	public String toString() {
+		String s = "TurnoID: " + this.turnoID + "\nNro Consultorio: " + this.consultorio + "\nFecha: " + this.fecha + "\nHora Inicio: " + this.horaInicio + "\nCosto: $" + this.costo;
+		return s;
+	}
+	
 }
