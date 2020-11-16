@@ -74,9 +74,12 @@ public class SistemaInterno {
 		List<Turno> turnosFechaIndicada = new ArrayList<Turno>();
 		for(Turno t : this.turnos) {
 			// Voy recorriendo los turnos
-			if(t.getFecha().isEqual(fecha)) {
-				// Si la fecha del turno es igual a la pasada por parametro, agrego el turno a la lista
-				turnosFechaIndicada.add(t);
+			if(t.getConsultorio() == consultorio) {
+				// Pregunto si el turno pertenece al consultorio donde se realiza la especialidad solicitada por el cliente
+				if(t.getFecha().isEqual(fecha)) {
+					// Si la fecha del turno es igual a la pasada por parametro, agrego el turno a la lista
+					turnosFechaIndicada.add(t);
+				}
 			}
 		}
 		boolean band = false; // bandera para saber si se encontró un turno con la misma horaInicio que el pasado por parametro.
@@ -106,6 +109,16 @@ public class SistemaInterno {
 
 	public List<Turno> verTurnos(Paciente p){
 		return p.getTurnos();
+	}
+
+	public Turno obtenerProximoTurno(int dni) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Turno tieneTurnoHoy(int dni) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -6,6 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		sI = new SistemaInterno();
 		s = new Scanner(System.in);
+		menu();
 	}
 	
 	public static void menu() {
@@ -18,7 +19,10 @@ public class Main {
 			int opcion = 0;
 			opcion = s.nextInt();
 			switch(opcion) {
-			case 1:break;
+			case 1:{
+						//sI.brindarTurno(consultorio, costo, fecha, horaFinalizacion, horaInicio, paciente);
+						break;
+					}
 			case 2:{
 						System.out.println("Ingrese el numero de DNI del Paciente: ");
 						int dni = s.nextInt();
