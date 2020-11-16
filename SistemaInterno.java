@@ -29,6 +29,7 @@ public class SistemaInterno {
 	}
 
 	public List<Paciente> contarInasistenciasPacientes(){
+		// Este metodo está mal porque no tiene en cuenta la fecha que poseen los turnos
 		List<Paciente> pacientesInasistentes = new ArrayList<Paciente>();
 		HashMap<Paciente, Integer> pacientesEInasistencias = new HashMap<Paciente,Integer>();
 		// Reviso los turnos que no fueron concurridos
@@ -112,15 +113,6 @@ public class SistemaInterno {
 		return p.getTurnos();
 	}
 
-	public Turno obtenerProximoTurno(int dni) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Turno tieneTurnoHoy(int dni) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void concurrirTurno(int nro){
 		//confirmo si el cliente tiene turno
@@ -139,6 +131,7 @@ public class SistemaInterno {
 						else {
 							System.out.println("El monto ingresado no es suficiente");
 						}
+						s.close();
 						break;
 					}
 				}
