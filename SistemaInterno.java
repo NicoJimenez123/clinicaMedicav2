@@ -108,4 +108,43 @@ public class SistemaInterno {
 		return p.getTurnos();
 	}
 
+
+
+
+	
+	public void concurrirTurno(int nro){
+		//confirmo si el cliente tiene turno
+		for(Paciente estePaciente : this.pacientes){
+			if(estePaciente.getDni.equals(nro)){
+				for(Turno esteTurnoLista : estePaciente.turnos){
+					if(esteTurnoLista.programadoParaHoy() && !esteTurnoLista.fueConcurrido()){
+						estePaciente.abonar();
+						esteTurnoLista.fueConcurrido(true);
+						break;
+					}
+				}
+				break;
+			}
+			
+		}
+		
+
+	}
+
+
+	public LocalDate consultarTurno(int nro){
+		//reviso la lista de pacientes
+		for(Paciente estePaciente : this.pacientes){
+			//busco un paciente que tenga el dni igial al pasado por parametro
+			if(estePaciente.getDni().equals(nro))
+				//retorno el ultimo turno agregado
+				/*NOTA: asumo que el sistema apila los turnos ordenandolos del mas antiguo al mas nuevo*/
+				return estePaciente.turnos.get(estePaciente.turnos.size -1).getFecha();
+
+		}
+	}
+
+
+
+
 }
