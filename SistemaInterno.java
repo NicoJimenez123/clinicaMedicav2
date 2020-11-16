@@ -37,7 +37,7 @@ public class SistemaInterno {
 				Paciente p = t.getPaciente();
 				Integer i = 0;
 				if(pacientesEInasistencias.containsKey(t.getPaciente())) {
-					// Pregunto si el paciente ya se encuentra en la lista y si lo est√° le sumo una inasistencia
+					// Pregunto si el paciente ya se encuentra en la lista y si lo est· le sumo una inasistencia
 					i = pacientesEInasistencias.get(p) + 1;
 					pacientesEInasistencias.put(p, i);
 				}
@@ -79,7 +79,7 @@ public class SistemaInterno {
 				turnosFechaIndicada.add(t);
 			}
 		}
-		boolean band = false; // bandera para saber si se encontr√≥ un turno con la misma horaInicio que el pasado por parametro.
+		boolean band = false; // bandera para saber si se encontrÛ un turno con la misma horaInicio que el pasado por parametro.
 		for(Turno t : turnosFechaIndicada) {
 			// Voy recorriendo cada turno y hago la comparacion
 			if(t.getHoraInicio().compareTo(horaInicio) == 1) {
@@ -144,6 +144,18 @@ public class SistemaInterno {
 		}
 		return null;
 	}
+
+
+
+	public void agregarPaciente(Paciente paciente){
+		this.pacientes.add(paciente);
+	}
+
+	public void agregarAreaMedica(AreaMedica areaMedica){
+		this.areasMedicas.add(areaMedica);
+	}
+
+
 
 
 
