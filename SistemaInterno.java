@@ -149,4 +149,12 @@ public class SistemaInterno {
 		return null;
 	}
 	
+	public void agregarPaciente(Paciente paciente){
+		this.pacientes.add(paciente);
+	}
+
+	public void agregarAreaMedica(AreaMedica areaMedica){
+		this.areasMedicas.add(areaMedica);
+	}
+
 }
