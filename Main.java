@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -12,11 +14,14 @@ public class Main {
 	}
 	
 	public static void menu() {
+		cargarDatos();
 		while(true){
+			System.out.println();
 			System.out.println("Opcion 1) Brindar Turno");
 			System.out.println("Opcion 2) Consultar Turno");
 			System.out.println("Opcion 3) Concurrir Turno");
 			System.out.println("Opcion 4) Obtener Reporte de Estudios Realizados");
+			System.out.println("Opcion 5) Registrar un Paciente");
 			System.out.println("Ingrese una Opcion: ");
 			int opcion = 0;
 			opcion = s.nextInt();
@@ -28,20 +33,18 @@ public class Main {
 			case 2:{
 						System.out.println("Ingrese el numero de DNI del Paciente: ");
 						int dni = s.nextInt();
-						Turno t = sI.obtenerProximoTurno(dni);
-						System.out.println("Proximo turno del paciente: " + t.obtenerFechaYHora());
+						Turno t = sI.consultarTurno(dni);
+						if(t != null)
+							System.out.println("Proximo turno del paciente: " + t.obtenerFechaYHora());
+						else {
+							System.out.println("El Paciente no posee un turno proximo");
+						}
 						break;
 					}
 			case 3:{
 						System.out.println("Ingrese el numero de DNI del Paciente: ");
 						int dni = s.nextInt();
-						Turno t = sI.tieneTurnoHoy(dni);
-						if(t != null) {
-							System.out.println("El turno del paciente está programado para las " + t.getHoraInicio().toString());
-						}
-						else {
-							System.out.println("El paciente no tiene ningún turno programado en el día de la fecha");
-						}
+						sI.concurrirTurno(dni);
 						break;
 					}
 			case 4:{
@@ -49,6 +52,8 @@ public class Main {
 						System.out.println("La cantidad de estudios realizados hasta el día de la fecha es: " + cant);
 						break;
 					}
+			case 5: Paciente p = crearPaciente();sI.agregarPaciente(p); break;
+			case 33: cargarDatos();break;
 			}
 		}
 	}
@@ -83,27 +88,29 @@ public class Main {
 		String nroConsultorio = s.next();
 		System.out.println("\nIngrese costo: ");
 		String costo = s.next();
-		System.out.println("\nIngrese fecha: ");
+		System.out.println("\nIngrese fecha (yyyy-mm-dd): ");
 		String fecha = s.next();
-		System.out.println("\nIngrese la hora de inicio: ");
+		System.out.println("\nIngrese la hora de inicio (hh-mm): ");
 		String hrInicio = s.next();
 		System.out.println("\nIngrese la hora de finalizacion: ");
 		String hrFin = s.next();
-		System.out.println("\nIngrese nombre paciente: ");
-		String nombrePaciente = s.next();
+		System.out.println("\nIngrese el DNI del paciente: ");
+		int dni = s.nextInt();
 
-		Paciente paciente = new Paciente();
-		paciente.setNombre(nombrePaciente);
-
-		sI.brindarTurno(
-			Integer.parseInt(nroConsultorio),
-			Float.parseFloat(costo),
-			parseFecha(fecha),
-			parseTiempo(hrInicio),
-			parseTiempo(hrFin),
-			paciente
-		);
-
+		Paciente paciente = sI.obtenerPaciente(dni);
+		if(paciente != null) {
+			sI.brindarTurno(
+				Integer.parseInt(nroConsultorio),
+				Float.parseFloat(costo),
+				parseFecha(fecha),
+				parseTiempo(hrFin),
+				parseTiempo(hrInicio),
+				paciente
+			);
+		}
+		else {
+			System.out.println("No existe un paciente registrado con ese numero de DNI");
+		}
 
 	}
 
@@ -128,6 +135,20 @@ public class Main {
         LocalTime tiempo2 = null;
         tiempo2 = LocalTime.parse(tiempo);
         return tiempo2;
+    }
+    
+    public static void cargarDatos() {
+    	AreaMedica a = new AreaMedica();
+    	a.setCodigoArea(0);
+    	a.setNombreArea("Especialidades Medico-Quirurgicas");
+    	List<Consultorio> c = new ArrayList<Consultorio>();
+    	Consultorio c2 = new Consultorio();
+    	c2.setMedico(new Medico("Nico", new Especialidad("Dermatologia")));
+    	c2.setNumeroConsultorio(0);
+    	c.add(c2);
+    	a.setConsultorios(c);
+    	sI.agregarAreaMedica(a);
+    	sI.agregarPaciente(new Paciente("Jimenez",1,"Lugar","Nicolas","123"));
     }
 	
 }

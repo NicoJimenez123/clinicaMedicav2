@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,8 +16,20 @@ public class Paciente {
 	private List<Turno> turnos;
 
 	public Paciente(){
-
+		this.turnos = new ArrayList<Turno>();
 	}
+	
+
+	public Paciente(String apellido, int dni, String domicilio, String nombre, String numeroTelefono) {
+		super();
+		this.apellido = apellido;
+		this.dni = dni;
+		this.domicilio = domicilio;
+		this.nombre = nombre;
+		this.numeroTelefono = numeroTelefono;
+		this.turnos = new ArrayList<Turno>();
+	}
+
 
 	public String getApellido() {
 		return apellido;

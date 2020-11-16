@@ -9,8 +9,8 @@ public class Especialidad {
 
 	private String nombreEspecialidad;
 
-	public Especialidad(){
-
+	public Especialidad(String n){
+		this.nombreEspecialidad = n;
 	}
 
 	public String getNombreEspecialidad() {

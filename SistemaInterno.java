@@ -3,6 +3,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.time.*;
 /**
  * @author Nicolas Jimenez
@@ -97,6 +98,7 @@ public class SistemaInterno {
 		}
 		//por el contrario creo el turno y aviso con el return true que pudo ser creado
 		Turno turno = new Turno(consultorio, costo, fecha, horaFinalizacion, horaInicio, paciente);
+		System.out.println(turno);
 		this.turnos.add(turno);
 		paciente.anadirTurno(turno);
 		return true;
@@ -127,8 +129,17 @@ public class SistemaInterno {
 			if(estePaciente.getDni() == nro){
 				for(Turno esteTurnoLista : estePaciente.getTurnos()){
 					if(esteTurnoLista.programadoParaHoy() && !esteTurnoLista.fueConcurrido()){
-						estePaciente.abonar();
-						esteTurnoLista.setFueConcurrido(true);
+						System.out.println("El monto a abonar es: " + esteTurnoLista.getCosto());
+						System.out.println("Ingrese el monto abonado por el paciente: ");
+						Scanner s = new Scanner(System.in);
+						float costo = s.nextFloat();
+						if(costo >= esteTurnoLista.getCosto()) {
+							System.out.println("El paciente ya puede ir a la sala de espera para ser atendido");
+							esteTurnoLista.setFueConcurrido(true);
+						}
+						else {
+							System.out.println("El monto ingresado no es suficiente");
+						}
 						break;
 					}
 				}
@@ -144,7 +155,8 @@ public class SistemaInterno {
 			if(estePaciente.getDni() == nro)
 				//retorno el ultimo turno agregado
 				/*NOTA: asumo que el sistema apila los turnos ordenandolos del mas antiguo al mas nuevo*/
-				return estePaciente.getTurnos().get(estePaciente.getTurnos().size() -1);
+				if(estePaciente.getTurnos().size() >= 1)
+					return estePaciente.getTurnos().get(estePaciente.getTurnos().size() -1);
 		}
 		return null;
 	}
@@ -155,6 +167,15 @@ public class SistemaInterno {
 
 	public void agregarAreaMedica(AreaMedica areaMedica){
 		this.areasMedicas.add(areaMedica);
+	}
+	
+	public Paciente obtenerPaciente(int dni) {
+		for(Paciente p : this.pacientes) {
+			if(p.getDni() == dni) {
+				return p;
+			}
+		}
+		return null;
 	}
 
 }

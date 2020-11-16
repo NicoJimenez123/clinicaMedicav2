@@ -115,6 +115,8 @@ public class Turno {
 	}
 
 	public boolean programadoParaHoy(){
+		if(this.fecha.compareTo(LocalDate.now()) == 0) {
+			return true;}
 		return false;
 	}
 
@@ -123,7 +125,7 @@ public class Turno {
 	}
 	
 	public String obtenerFechaYHora() {
-		return this.fecha.toString() + this.horaInicio.toString();
+		return this.fecha.toString() + " " + this.horaInicio.toString();
 	}
 
 }

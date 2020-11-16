@@ -13,6 +13,10 @@ public class Medico {
 	public Medico(){
 
 	}
+	public Medico(String n, Especialidad e){
+		this.nombre = n;
+		this.especialidad = e;
+	}
 	
 	public Especialidad getEspecialidad() {
 		return especialidad;

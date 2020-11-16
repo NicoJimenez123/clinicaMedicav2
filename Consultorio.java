@@ -10,7 +10,6 @@ public class Consultorio {
 	private List<Laboratorio> laboratoriosAsociados;
 	private Medico medico;
 	private int numeroConsultorio;
-	private Laboratorio m_Laboratorio;
 
 	public Consultorio(){
 
@@ -40,13 +39,6 @@ public class Consultorio {
 		this.numeroConsultorio = numeroConsultorio;
 	}
 
-	public Laboratorio getLaboratorio() {
-		return m_Laboratorio;
-	}
-
-	public void setLaboratorio(Laboratorio m_Laboratorio) {
-		this.m_Laboratorio = m_Laboratorio;
-	}
 
 	public void derivarLaboratorio(){
 
